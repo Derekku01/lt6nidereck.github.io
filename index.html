@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LT6 ni Dereck:></title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: rgb(255, 192, 203);
+        background: linear-gradient(
+          120deg,
+          rgba(255, 192, 203, 1) 25%,
+          rgba(127, 0, 255, 1) 50%,
+          rgba(128, 0, 128, 1) 75%
+        );
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+      }
+      #container {
+        width: 300px;
+        margin: 100px auto;
+        padding: 30px;
+        background-color: transparent transparent transparent;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      label {
+        display: block;
+        margin-bottom: 10px;
+      }
+      input[type="text"],
+      input[type="number"],
+      select {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        box-sizing: border-box;
+      }
+      button {
+        width: 100%;
+        padding: 10px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+      }
+      #result {
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <label for="name">Name Student:</label>
+      <input type="text" id="name" />
+
+      <label for="age">Age:</label>
+      <input type="number" id="age" min="0" />
+
+      <label for="gender">Gender:</label>
+      <select id="gender">
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="other">Other</option>
+      </select>
+
+      <button onclick="checkAge()">Check</button>
+      <div id="result"></div>
+    </div>
+
+    <script>
+      function checkAge() {
+        var name = document.getElementById("name").value;
+        var age = parseInt(document.getElementById("age").value);
+        var gender = document.getElementById("gender").value;
+        var resultElement = document.getElementById("result");
+
+        if (name.trim() === "") {
+          resultElement.textContent = "Please enter your name.";
+        } else if (isNaN(age) || age < 0) {
+          resultElement.textContent = "Please enter a valid age.";
+        } else if (gender === "") {
+          resultElement.textContent = "Please select your gender.";
+        } else if (age < 18) {
+          resultElement.textContent = "Hi " + name + ", you are a minor.";
+        } else {
+          resultElement.textContent = "Hi " + name + ", you are an adult.";
+        }
+      }
+    </script>
+  </body>
+</html>
